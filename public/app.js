@@ -6,7 +6,7 @@ const messageBtn = document.getElementById("message-btn");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  console.log(messageInput.value);
+  console.log(JSON.stringify({ message: messageInput.value }));
 
   messageBtn.disabled = true;
   messageBtn.innerHTML = "Sending...";
@@ -21,6 +21,8 @@ form.addEventListener("submit", async (e) => {
     });
 
     const data = await res.json();
+
+    console.log(res)
 
     responseEl.innerHTML = data.message;
   } catch (error) {
